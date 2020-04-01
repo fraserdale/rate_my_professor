@@ -1,0 +1,16 @@
+body{
+    padding-top: 0
+}
+
+h1{
+    text-align: center;
+    margin-top: 0;
+
+}
+
+footer {
+    position: fixed;
+    height: 100px;
+    bottom: 0;
+    width: 100%;
+}
