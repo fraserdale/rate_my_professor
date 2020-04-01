@@ -1,0 +1,9 @@
+<ul>
+    {% if professors %}
+    {% for p in professors %}
+    <li>
+        <a href="{% url 'rango:show_professor' p.slug %}">{{ p.name }}</a>
+    </li>
+    {% endfor %}
+    {%endif%}
+</ul>

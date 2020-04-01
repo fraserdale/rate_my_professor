@@ -1,0 +1,21 @@
+{% extends 'rango/base.html' %} 
+{% load staticfiles %}
+{% block title_block %} 
+	{% if professor %}
+		{{ professor.name }} 
+	{% else %}
+	    Unknown professor
+	{% endif %}
+{% endblock %}
+{% block body_block %}
+	{% if professor %}
+		<h1>{{ professor.name }}</h1> 
+		
+		{% if user.is_authenticated %}
+			<a href="{% url 'rango:add_review' professor.slug %}">Add Page</a> 
+		<br /> 
+		{% endif %}
+	{% else %}
+		The specified category does not exist.
+	{% endif %}
+{% endblock %}
