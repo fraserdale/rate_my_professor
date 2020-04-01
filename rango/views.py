@@ -52,44 +52,44 @@ def register(request):
 
 
 def user_login(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+	if request.method == 'POST':
+		username = request.POST.get('username')
+		password = request.POST.get('password')
 
-        user = authenticate(username=username, password=password)
+		user = authenticate(username=username, password=password)
 
-        if user:
-            if user.is_active:
-                login(request, user)
-                return redirect(reverse('rango:index'))
-            else:
-                return HttpResponse("Your account is disabled.")
-        else:
+		if user:
+			if user.is_active:
+				login(request, user)
+				return redirect(reverse('rango:index'))
+			else:
+				return HttpResponse("Your account is disabled.")
+		else:
 
-            print(f"Invalid login details: {username}, {password}")
-            return HttpResponse("Invalid login details supplied.")
-    else:
-        # No context variables to pass to the template system, hence the
-        # blank dictionary object...
-        return render(request, 'rango/login.html')
+			print(f"Invalid login details: {username}, {password}")
+			return HttpResponse("Invalid login details supplied.")
+	else:
+		# No context variables to pass to the template system, hence the
+		# blank dictionary object...
+		return render(request, 'rango/login.html')
 
 
 def recent(request):
-    recent_reviews = Reviews.objects.order_by('date')[:7]
+	recent_reviews = Reviews.objects.order_by('date')[:7]
 
-    response = render(request, 'rango/recent.html', context = {'recent_list': recent_reviews})
+	response = render(request, 'rango/recent.html', context = {'recent_list': recent_reviews})
 	return response
 
 
 def leaderboard(request):
-    leaderboard_list = Professor.objects.order_by('rating')[:7]
+	leaderboard_list = Professor.objects.order_by('rating')[:7]
 
-    response = render(request, 'rango/leaderboard.html', context = {'leaderboard_list': leaderboard_list})
+	response = render(request, 'rango/leaderboard.html', context = {'leaderboard_list': leaderboard_list})
 	return response
 
 
 def professors(request):
-    professors_list = Professor.objects.all()
+	professors_list = Professor.objects.all()
 
 	response = render(request, 'rango/professors.html', context = {'professors_list': professors_list})
 	return response

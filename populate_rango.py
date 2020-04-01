@@ -1,15 +1,10 @@
 import os 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE','tango_with_django_project.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE','rate_my_professor.settings')
 import django
 django.setup() 
 from rango.models import Reviews,User
 
 def populate():
-
-    departments = [
-        {'Computing' : { 'subjects' : comp_subjects, }},
-        {'Philosophy' : { 'subjects' : phil_subjects, }},
-    ]
 
     comp_subjects = [
         {'name' : 'ALG', },
@@ -21,25 +16,34 @@ def populate():
         {'name' : 'Phil2'},
     ]
 
+
+    departments = [
+        {'Computing' : { 'subjects' : comp_subjects, }},
+        {'Philosophy' : { 'subjects' : phil_subjects, }},
+    ]
+
+
+    
+
     comp_professors = [
         {'name' : 'John smith',
          'rating' : '3.5',
-         'picture' : null,
+         'picture' : None,
         },
         {'name' : 'Abby smith',
          'rating' : '5',
-         'picture' : null,
+         'picture' : None,
         },
     ]
 
     phil_professors = [
         {'name' : 'Jack Black',
          'rating' : '3.5',
-         'picture' : null,
+         'picture' : None,
         },
         {'name' : 'Sean Bean',
          'rating' : '5',
-         'picture' : null,
+         'picture' : None,
         },
     ]
 

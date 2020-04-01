@@ -1,0 +1,35 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+{% block title_block %}
+Recent
+{% endblock %}
+{% block body_block %}
+
+<h3>Recent Posts</h3>
+{% if recent_list %}
+{% for review in recent_list %}
+<ul>
+    <li>
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4" style='margin-top:auto;margin-bottom:auto'>
+                    <img src=review.prof.picture style='height:100px;width:100px;'
+                        class="card-img">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">review.prof.name</h5>
+                        <p class="card-text">review.subject</p>
+                        <p class="card-text"><small class="text-muted">review.date</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </li>
+</ul>
+{% endfor %}
+{% else %}
+<p>No recent items</p>
+{% endif %}
+{% endblock%}
