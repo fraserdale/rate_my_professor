@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.template import RequestContext
 from rango.forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login, logout
@@ -11,7 +11,10 @@ from rango.forms import *
 
 # Create your views here.
 def index(request):
-	response = render(request,'rango/index.html')
+	recent_reviews = Reviews.objects.order_by('date')[:5]
+	top_professors = Professor.objects.order_by('rating')[:5]
+
+	response = render(request, 'rango/index.html', context = {'recent_reviews' : recent_reviews, 'top_rated' : top_professors})
 	return response
 
 
@@ -69,3 +72,33 @@ def user_login(request):
         # No context variables to pass to the template system, hence the
         # blank dictionary object...
         return render(request, 'rango/login.html')
+
+
+def recent(request):
+    recent_reviews = Reviews.objects.order_by('date')[:7]
+
+    response = render(request, 'rango/recent.html', context = {'recent_list': recent_reviews})
+	return response
+
+
+def leaderboard(request):
+    leaderboard_list = Professor.objects.order_by('rating')[:7]
+
+    response = render(request, 'rango/leaderboard.html', context = {'leaderboard_list': leaderboard_list})
+	return response
+
+
+def professors(request):
+    professors_list = Professor.objects.all()
+
+	response = render(request, 'rango/professors.html', context = {'professors_list': professors_list})
+	return response
+
+# url: professor/slug
+# def professor_view(request):
+#
+
+# url: professor/slug/review
+# def professor_review(request):
+#
+

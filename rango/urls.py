@@ -7,5 +7,11 @@ urlpatterns = [
     path('index', views.index, name='index'),
     path('login/', views.user_login, name='login'),
     path('register/', views.register, name='register'),
+    path('recent/', views.recent, name='recent'),
+    path('leaderboard/', views.leaderboard, name='leaderboard'),
+    path('professors/', views.professors, name='professors'),
+
+    #path('professor/<slug:professor_name_slug>', views.professor_view, name='professor_view'),
+    #path('professor/<slug:professor_name_slug>/review', views.professor_review, name='professor_review')
 
 ]
