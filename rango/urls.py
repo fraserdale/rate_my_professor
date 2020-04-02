@@ -11,6 +11,7 @@ urlpatterns = [
     path('leaderboard/', views.leaderboard, name='leaderboard'),
     path('professors/', views.professors, name='professors'),
     path('professor/<slug:professor_name_slug>', views.show_professor, name='show_professor'),
+    path('myreviews/', views.show_myreviews, name='show_myreviews'),
     #path('professor/<slug:professor_name_slug>/review', views.professor_review, name='professor_review')
 
 ]

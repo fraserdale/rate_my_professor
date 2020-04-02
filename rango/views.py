@@ -107,21 +107,21 @@ def show_professor(request, professor_name_slug):
 	try:
 		# Can we find a category name slug with the given name?
 		# If we can't, the .get() method raises a DoesNotExist exception.
-		# The .get() method returns one model instance or raises an exception. 
+		# The .get() method returns one model instance or raises an exception.
 		professor = Professor.objects.get(slug=professor_name_slug)
 		# Retrieve all of the associated pages.
-		# The filter() will return a list of page objects or an empty list. 
+		# The filter() will return a list of page objects or an empty list.
 		reviews = Reviews.objects.filter(professor=professor)
 		# Adds our results list to the template context under name pages.
 		context_dict['reviews'] = reviews
 		# We also add the category object from
 		# the database to the context dictionary.
-		# We'll use this in the template to verify that the category exists. 
+		# We'll use this in the template to verify that the category exists.
 		context_dict['professor'] = professor
 	except Professor.DoesNotExist:
 		# We get here if we didn't find # Don't do anything -
-		# the template will display the 
-		context_dict['professor'] = None 
+		# the template will display the
+		context_dict['professor'] = None
 		context_dict['reviews'] = None
 		# Go render the response and return
 		#the specified category.
@@ -129,11 +129,11 @@ def show_professor(request, professor_name_slug):
 		#qit to the client.
 	return render(request, 'rango/professor.html', context=context_dict)
 
-
-# url: professor/slug
-# def professor_view(request):
-#
-
-# url: professor/slug/review
-# def professor_review(request):
-#
+def show_myreviews(request):
+	if request.user.is_authenticated:
+		context_dict={}
+		myreviews = Reviews.objects.filter(createdby=request.user.username)
+		context_dict["myreviews"] = myreviews
+		return render(request, 'rango/myreviews.html', context=context_dict)
+	else:
+		return redirect("rango:login")

@@ -1,0 +1,36 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+{% block title_block %}
+My Reviews
+{% endblock %}
+{% block body_block %}
+
+<h3>My Reviews</h3>
+{% if myreviews %}
+{% for review in myreviews %}
+<ul>
+    <li>
+        <div class="card mb-3 card-max" >
+            <div class="row no-gutters">
+                <div class="col-md-4 img-middle" >
+                    <img src=review.prof.picture
+                        class="card-img prof_img">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">review.prof.name</h5>
+                        <p class="card-text">review.prof.subject</p>
+                        <p class="card-text">review.comment</p>
+                        <p class="card-text"><small class="text-muted">review.date</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </li>
+</ul>
+{% endfor %}
+{% else %}
+<p>No reviews posted</p>
+{% endif %}
+{% endblock%}
