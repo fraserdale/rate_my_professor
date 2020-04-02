@@ -14,20 +14,23 @@
 				<div class="card mb-3 card-max" >
 					<div class="row no-gutters">
 						<div class="col-md-4 img-middle">
-							<img src=prof.picture
+							<img src={{MEDIA_URL}}{{prof.picture}}
 								class="card-img prof_img">
 						</div>
 						<div class="col-md-8">
 							<div class="card-body">
-								<h5 class="card-title">prof.name</h5>
-								<p class="card-text">Department: prof.subject</p>
-								<p class="card-text"><small class="text-muted">prof.rating</small></p>
+								<h5 class="card-title">{{prof.name}}</h5>
+								<p class="card-text">Department: {{prof.subject.dept.name}}</p>
+								<p class="card-text"><small class="text-muted">{{prof.rating}}</small></p>
 							</div>
 						</div>
 					</div>
 				</div>
 				{% endfor %}
+			{%else%}
+				No posts
 			{% endif %}
+		</div>
 
 		<div class="col-sm" style='text-align: center'>
 			<h3>Most Recent</h3>
@@ -36,14 +39,14 @@
 				<div class="card mb-3 card-max" >
 					<div class="row no-gutters">
 						<div class="col-md-4 img-middle">
-							<img src=prof.picture
+							<img src={{MEDIA_URL}}{{review.prof.picture}}
 								class="card-img prof_img">
 						</div>
 						<div class="col-md-8">
 							<div class="card-body">
-								<h5 class="card-title">prof.name</h5>
-								<p class="card-text">Department: prof.subject</p>
-								<p class="card-text"><small class="text-muted">prof.rating</small></p>
+								<h5 class="card-title">Name: {{review.prof.name}}</h5>
+								<p class="card-text">Department: {{review.prof.subject.dept.name}}</p>
+								<p class="card-text"><small class="text-muted">Rating: {{review.prof.rating}}</small></p>
 							</div>
 						</div>
 					</div>

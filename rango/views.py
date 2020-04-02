@@ -15,7 +15,7 @@ def index(request):
 	recent_reviews = Reviews.objects.order_by('-date')[:5]
 	top_professors = Professor.objects.order_by('-rating')[:5]
 
-	response = render(request, 'rango/index.html', context = {'recent_reviews' : recent_reviews, 'top_rated' : top_professors})
+	response = render(request, 'rango/index.html', context = {'recent_reviews' : recent_reviews, 'top_professors' : top_professors})
 	return response
 
 
@@ -83,14 +83,14 @@ def user_logout(request):
 
 def recent(request):
 	recent_reviews = Reviews.objects.order_by('date')[:7]
-
+	print(recent_reviews)
 	response = render(request, 'rango/recent.html', context = {'recent_list': recent_reviews})
 	return response
 
 
 def leaderboard(request):
-	leaderboard_list = Professor.objects.order_by('rating')[:7]
-
+	leaderboard_list = Professor.objects.order_by('-rating')[:7]
+	print(leaderboard_list)
 	response = render(request, 'rango/leaderboard.html', context = {'leaderboard_list': leaderboard_list})
 	return response
 

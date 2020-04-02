@@ -18,6 +18,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
+PROFILE_DIR = os.path.join(BASE_DIR, 'media')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -28,7 +29,7 @@ SECRET_KEY = 'gho7faa1spf3ha6t*=t%yh6hf17!+^j0)8us7s0t^dcz&f-i13'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['fraserdale.pythonanywhere.com','127.0.0.1']
 
 
 # Application definition
@@ -127,3 +128,8 @@ USE_TZ = True
 STATICFILES_DIRS = [STATIC_DIR, ]
 
 STATIC_URL = '/static/'
+
+
+
+MEDIA_ROOT = PROFILE_DIR
+MEDIA_URL = '/media/'
