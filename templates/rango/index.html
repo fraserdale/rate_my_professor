@@ -1,21 +1,21 @@
 {% extends 'rango/base.html' %}
 {% load staticfiles %}
 {% block title_block %}
-	Homepage
+Homepage
 {% endblock %}
 {% block body_block %}
 
 <div class="container">
 	<div class="row">
-		<div class="col-sm text-center" >
+		<div class="col-sm text-center">
 			<h3>Top Rated</h3>
 			{% if top_professors %}
 			{% for prof in top_professors %}
-				<div class="card mb-3 card-max" >
+			<div class="card mb-3 ">
+				<a href="{% url 'rango:show_professor' prof.slug %}">
 					<div class="row no-gutters">
 						<div class="col-md-4 img-middle">
-							<img src={{MEDIA_URL}}{{prof.picture}}
-								class="card-img prof_img">
+							<img src={{MEDIA_URL}}{{prof.picture}} class="card-img prof_img">
 						</div>
 						<div class="col-md-8">
 							<div class="card-body">
@@ -25,10 +25,11 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				{% endfor %}
+				</a>
+			</div>
+			{% endfor %}
 			{%else%}
-				No posts
+			No posts
 			{% endif %}
 		</div>
 
@@ -36,22 +37,24 @@
 			<h3>Most Recent</h3>
 			{% if recent_reviews %}
 			{% for review in recent_reviews %}
-				<div class="card mb-3 card-max" >
+			<div class="card mb-3 ">
+				<a href="{% url 'rango:show_professor' review.prof.slug %}">
 					<div class="row no-gutters">
 						<div class="col-md-4 img-middle">
-							<img src={{MEDIA_URL}}{{review.prof.picture}}
-								class="card-img prof_img">
+							<img src={{MEDIA_URL}}{{review.prof.picture}} class="card-img prof_img">
 						</div>
 						<div class="col-md-8">
 							<div class="card-body">
 								<h5 class="card-title">Name: {{review.prof.name}}</h5>
 								<p class="card-text">Department: {{review.prof.subject.dept.name}}</p>
-								<p class="card-text"><small class="text-muted">Rating: {{review.prof.rating}}</small></p>
+								<p class="card-text"><small class="text-muted">Rating: {{review.prof.rating}}</small>
+								</p>
 							</div>
 						</div>
 					</div>
-				</div>
-				{% endfor %}
+				</a>
+			</div>
+			{% endfor %}
 			{% endif %}
 
 		</div>

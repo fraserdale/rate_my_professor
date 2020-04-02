@@ -8,13 +8,11 @@ Recent
 <h3>Recent Posts</h3>
 {% if recent_list %}
 {% for review in recent_list %}
-<ul>
-    <li>
-        <div class="card mb-3 card-max" >
+    <div class="card mb-3 ">
+        <a href="{% url 'rango:show_professor' review.prof.slug %}">
             <div class="row no-gutters">
-                <div class="col-md-4 img-middle" >
-                    <img src="{{MEDIA_URL}}{{review.prof.picture}}"
-                        class="card-img prof_img">
+                <div class="col-md-4 img-middle">
+                    <img src="{{MEDIA_URL}}{{review.prof.picture}}" class="card-img prof_img">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
@@ -25,10 +23,8 @@ Recent
                     </div>
                 </div>
             </div>
-        </div>
-
-    </li>
-</ul>
+        </a>
+    </div>
 {% endfor %}
 {% else %}
 <p>No recent items</p>

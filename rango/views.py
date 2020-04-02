@@ -111,7 +111,7 @@ def show_professor(request, professor_name_slug):
 		professor = Professor.objects.get(slug=professor_name_slug)
 		# Retrieve all of the associated pages.
 		# The filter() will return a list of page objects or an empty list.
-		reviews = Reviews.objects.filter(professor=professor)
+		reviews = Reviews.objects.filter(prof=professor)
 		# Adds our results list to the template context under name pages.
 		context_dict['reviews'] = reviews
 		# We also add the category object from

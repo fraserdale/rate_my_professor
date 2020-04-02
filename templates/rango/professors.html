@@ -11,7 +11,7 @@ Professors
 <ul>
     <li>
         <a href="{% url 'rango:show_professor' prof.slug %}">
-            <div class="card mb-3 card-max">
+            <div class="card mb-3">
                 <div class="row no-gutters">
                     <div class="col-md-4 img-middle">
                         <img src={{MEDIA_URL}}{{prof.picture}} class="card-img prof_img">
@@ -32,6 +32,6 @@ Professors
 </ul>
 {% endfor %}
 {% else %}
-<p>No recent items</p>
+<p>No professor items</p>
 {% endif %}
 {% endblock%}

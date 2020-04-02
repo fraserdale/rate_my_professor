@@ -9,12 +9,11 @@ My Reviews
 {% if myreviews %}
 {% for review in myreviews %}
 <ul>
-    <li>
-        <div class="card mb-3 card-max" >
+    <div class="card mb-3 card-max">
+        <a href="{% url 'rango:show_professor' review.prof.slug %}">
             <div class="row no-gutters">
-                <div class="col-md-4 img-middle" >
-                    <img src=review.prof.picture
-                        class="card-img prof_img">
+                <div class="col-md-4 img-middle">
+                    <img src=review.prof.picture class="card-img prof_img">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
@@ -25,9 +24,9 @@ My Reviews
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
+    </div>
 
-    </li>
 </ul>
 {% endfor %}
 {% else %}
