@@ -1,13 +1,13 @@
 {% extends 'rango/base.html' %}
 {% load staticfiles %}
 {% block title_block %}
-Recent
+Leaderboard
 {% endblock %}
 {% block body_block %}
 
-<h3>Recent Posts</h3>
-{% if recent_list %}
-{% for review in recent_list %}
+<h3>Leaderboards</h3>
+{% if leaderboard_list %}
+{% for review in leaderboard_list %}
 <ul>
     <li>
         <div class="card mb-3" style="max-width: 540px;">
@@ -20,7 +20,7 @@ Recent
                     <div class="card-body">
                         <h5 class="card-title">review.prof.name</h5>
                         <p class="card-text">review.prof.subject</p>
-                        <p class="card-text">review.comment</p>
+                        <p class="card-text">review.rating</p>
                         <p class="card-text"><small class="text-muted">review.date</small></p>
                     </div>
                 </div>

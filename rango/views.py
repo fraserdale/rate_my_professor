@@ -11,8 +11,8 @@ from rango.forms import *
 
 # Create your views here.
 def index(request):
-	recent_reviews = Reviews.objects.order_by('date')[:5]
-	top_professors = Professor.objects.order_by('rating')[:5]
+	recent_reviews = Reviews.objects.order_by('-date')[:5]
+	top_professors = Professor.objects.order_by('-rating')[:5]
 
 	response = render(request, 'rango/index.html', context = {'recent_reviews' : recent_reviews, 'top_rated' : top_professors})
 	return response
@@ -93,6 +93,35 @@ def professors(request):
 
 	response = render(request, 'rango/professors.html', context = {'professors_list': professors_list})
 	return response
+
+def show_professor(request, professor_name_slug):
+	context_dict = {}
+	# Create a context dictionary which we can pass # to the template rendering engine. context_dict = {}
+	try:
+		# Can we find a category name slug with the given name?
+		# If we can't, the .get() method raises a DoesNotExist exception.
+		# The .get() method returns one model instance or raises an exception. 
+		professor = Professor.objects.get(slug=professor_name_slug)
+		# Retrieve all of the associated pages.
+		# The filter() will return a list of page objects or an empty list. 
+		reviews = Reviews.objects.filter(professor=professor)
+		# Adds our results list to the template context under name pages.
+		context_dict['reviews'] = reviews
+		# We also add the category object from
+		# the database to the context dictionary.
+		# We'll use this in the template to verify that the category exists. 
+		context_dict['professor'] = professor
+	except Professor.DoesNotExist:
+		# We get here if we didn't find # Don't do anything -
+		# the template will display the 
+		context_dict['professor'] = None 
+		context_dict['reviews'] = None
+		# Go render the response and return
+		#the specified category.
+		#"no category" message for us.
+		#qit to the client.
+	return render(request, 'rango/professor.html', context=context_dict)
+
 
 # url: professor/slug
 # def professor_view(request):
