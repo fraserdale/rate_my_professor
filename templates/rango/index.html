@@ -11,6 +11,7 @@ Homepage
 			<h3>Top Rated</h3>
 			{% if top_professors %}
 			{% for prof in top_professors %}
+			{% if prof.slug %}
 			<div class="card mb-3 ">
 				<a href="{% url 'rango:show_professor' prof.slug %}">
 					<div class="row no-gutters">
@@ -27,6 +28,7 @@ Homepage
 					</div>
 				</a>
 			</div>
+			{% endif%}
 			{% endfor %}
 			{%else%}
 			No posts

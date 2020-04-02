@@ -6,8 +6,8 @@ Professors
 {% block body_block %}
 
 <h3>Recent Posts</h3>
-{% if professors %}
-{% for prof in professors %}
+{% if professors_list %}
+{% for prof in professors_list %}
 <ul>
     <li>
         <a href="{% url 'rango:show_professor' prof.slug %}">

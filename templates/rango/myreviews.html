@@ -7,29 +7,31 @@ My Reviews
 
 <h3>My Reviews</h3>
 {% if myreviews %}
+<button id='delete'>DELETE ALL</button>
 {% for review in myreviews %}
-<ul>
-    <div class="card mb-3 card-max">
+<ul class='list'>
+    <div class="card mb-3">
         <a href="{% url 'rango:show_professor' review.prof.slug %}">
             <div class="row no-gutters">
                 <div class="col-md-4 img-middle">
-                    <img src=review.prof.picture class="card-img prof_img">
+                    <img src={{MEDIA_URL}}{{review.prof.picture}} class="card-img prof_img">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">review.prof.name</h5>
-                        <p class="card-text">review.prof.subject</p>
-                        <p class="card-text">review.comment</p>
-                        <p class="card-text"><small class="text-muted">review.date</small></p>
+                        <h5 class="card-title">{{review.prof.name}}</h5>
+                        <p class="card-text">Department: {{review.prof.subject.dept.name}}</p>
+                        <p class="card-text">Subject: {{review.prof.subject.name}}</p>
+                        <p class="card-text">Review: {{review.comment}}</p>
+                        <p class="card-text"><small class="text-muted">{{review.date}}</small></p>
                     </div>
                 </div>
             </div>
         </a>
     </div>
-
 </ul>
 {% endfor %}
 {% else %}
 <p>No reviews posted</p>
 {% endif %}
 {% endblock%}
+

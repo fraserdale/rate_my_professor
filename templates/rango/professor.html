@@ -14,8 +14,8 @@ Unknown professor
 <div class="row">
 	<div class="col-sm">
 		<div class="row">
-			<div class="col-sm">
-				<img src={{MEDIA_URL}}{{professor.picture}} alt='professor image'>
+			<div class="col-sm img-middle">
+				<img src={{MEDIA_URL}}{{professor.picture}} alt='professor image' class="card-img prof_img">
 			</div>
 			<div class="col-sm">
 				<p>Department: {{professor.subject.dept.name}} </p>
@@ -29,15 +29,18 @@ Unknown professor
 	</div>
 
 </div>
+{% if user.is_authenticated %}
 <div class="row">
 	<div class="col-sm">
 	</div>
+	
 	<div class="col-sm">
-		<button>Write a review </button>
+		<a href="{% url 'rango:add_review' professor.slug %}">Add Review</a> 
 	</div>
 	<div class="col-sm">
 	</div>
 </div>
+{% endif %}
 
 {% else %}
 The specified category does not exist.
