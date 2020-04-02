@@ -14,3 +14,46 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+
+body {
+    padding-top: 5rem;
+}
+
+.starter-template {
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
+
+.footer-color{
+    background-color: #eee
+}
+
+.text-right{
+    text-align: right
+}
+
+.text-left{
+    text-align: left
+}
+
+.text-center{
+    text-align: center
+}
+
+.vertical-middle{
+    vertical-align: middle
+}
+
+.img-middle{
+    margin-top:auto;
+    margin-bottom:auto
+}
+
+.card-max{
+    max-width: 540px;
+}
+
+.prof_img{
+    height:100px;width:100px;
+}

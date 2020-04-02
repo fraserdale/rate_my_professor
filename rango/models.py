@@ -24,6 +24,7 @@ class Professor(models.Model):
     rating = models.IntegerField(default=1, validators=[ MaxValueValidator(5), MinValueValidator(1)])
     picture = models.ImageField(upload_to='profile_images', blank=True)
     subject = models.ForeignKey(Subject, null=True, on_delete=models.CASCADE)
+    slug = models.SlugField(unique=True)
 
 class Reviews(models.Model):
     date = models.DateTimeField(default=datetime.now)

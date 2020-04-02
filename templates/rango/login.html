@@ -28,10 +28,10 @@
         <p class="mt-5 mb-3 text-muted">&copy; 2017-2019</p>
     </form>
 
-    <footer class="footer fixed-bottom " style='background-color: #eee'>
+    <footer class="footer fixed-bottom footer-color" >
   		<div class="container">
-  			<div class="row" style='vertical-align: middle'>
-  				<div class="col-sm" style='text-align: left'>
+  			<div class="row vertical-middle" >
+  				<div class="col-sm text-left">
   						{% if user.is_authenticated %}
   						User is logged in
   						{% else %}
@@ -40,7 +40,7 @@
   						<a href="{% url 'rango:login' %}">Login</a>
   						{% endif %}
   				</div>
-  				<div class="col-sm" style='text-align: right'>
+  				<div class="col-sm text-right" >
   						<a href='/rango/recent'>Recent</a>
   						|
   						<a href='/rango/leaderboard'>Leaderboard</a>
