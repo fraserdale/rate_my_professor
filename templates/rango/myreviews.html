@@ -9,7 +9,7 @@ My Reviews
 {% if myreviews %}
 <button id='delete'>DELETE ALL</button>
 {% for review in myreviews %}
-<ul class='list'>
+<div class='list'>
     <div class="card mb-3">
         <a href="{% url 'rango:show_professor' review.prof.slug %}">
             <div class="row no-gutters">
@@ -28,10 +28,9 @@ My Reviews
             </div>
         </a>
     </div>
-</ul>
+</div>
 {% endfor %}
 {% else %}
 <p>No reviews posted</p>
 {% endif %}
 {% endblock%}
-

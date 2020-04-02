@@ -8,25 +8,24 @@ Leaderboard
 <h3>Leaderboards</h3>
 {% if leaderboard_list %}
 {% for prof in leaderboard_list %}
-<ul>
-    <div class="card mb-3 ">
-        <a href="{% url 'rango:show_professor' prof.slug %}">
-            <div class="row no-gutters">
-                <div class="col-md-4 img-middle">
-                    <img src="{{MEDIA_URL}}{{prof.picture}}" class="card-img prof_img">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">Name: {{prof.name}}</h5>
-                        <p class="card-text">{{prof.subject.dept.name}}</p>
-                        <p class="card-text">{{prof.rating}}</p>
-                    </div>
+
+<div class="card mb-3 ">
+    <a href="{% url 'rango:show_professor' prof.slug %}">
+        <div class="row no-gutters">
+            <div class="col-md-4 img-middle">
+                <img src="{{MEDIA_URL}}{{prof.picture}}" class="card-img prof_img">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Name: {{prof.name}}</h5>
+                    <p class="card-text">{{prof.subject.dept.name}}</p>
+                    <p class="card-text">{{prof.rating}}</p>
                 </div>
             </div>
-        </a>
-    </div>
+        </div>
+    </a>
+</div>
 
-</ul>
 {% endfor %}
 {% else %}
 <p>No recent items</p>
