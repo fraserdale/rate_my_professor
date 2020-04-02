@@ -27,7 +27,8 @@ class Professor(models.Model):
 
 class Reviews(models.Model):
     date = models.DateTimeField(default=datetime.now)
-    createdby = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    createdby = models.CharField(max_length=128, unique=False, null=True)
     prof = models.ForeignKey(Professor, null=True, on_delete=models.CASCADE)
     rating = models.IntegerField(default=1, validators=[ MaxValueValidator(5), MinValueValidator(1)])
     comment = models.CharField(max_length=128, unique=False)
+ 
