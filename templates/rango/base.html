@@ -48,9 +48,9 @@
 						{% if user.is_authenticated %}
 						User is logged in
 						{% else %}
-						<a href='/rango/register'>click here to register</a>
+						<a href="{% url 'rango:register' %}">Register</a>
 						|
-						<a href='/rango/login'>click here to login</a>
+						<a href="{% url 'rango:login' %}">Login</a>
 						{% endif %}
 				</div>
 				<div class="col-sm" style='text-align: right'>
@@ -59,7 +59,7 @@
 						<a href='/rango/leaderboard'>Leaderboard</a>
 				</div>
 			</div>
-			
+
 		</div>
 	</footer>
 	<!-- /.container -->

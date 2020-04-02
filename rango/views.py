@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
 from rango.models import *
 from rango.forms import *
@@ -74,6 +75,12 @@ def user_login(request):
 		return render(request, 'rango/login.html')
 
 
+@login_required
+def user_logout(request):
+    logout(request)
+    return redirect(reverse('rango:index'))
+
+
 def recent(request):
 	recent_reviews = Reviews.objects.order_by('date')[:7]
 
@@ -101,4 +108,3 @@ def professors(request):
 # url: professor/slug/review
 # def professor_review(request):
 #
-
