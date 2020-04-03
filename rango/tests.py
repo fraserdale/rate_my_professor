@@ -211,3 +211,56 @@ class RegistrationTests(TestCase):
         content = request.content.decode('utf-8')
 
         self.assertTrue(self.client.login(username='glasgowStudent', password='UofG1451'), f"{FAILURE_HEADER}Sample user login was unsuccessful during testing.{FAILURE_FOOTER}")
+
+class LoginTests(TestCase):
+    """
+    Test login functionality.
+    """
+    def test_login_url_exists(self):
+        """
+        Login view existence check.
+        """
+        url = ''
+
+        try:
+            url = reverse('rango:login')
+        except:
+            pass
+
+        self.assertEqual(url, '/rango/login/', f"{FAILURE_HEADER}Login page not linked correctly.{FAILURE_FOOTER}")
+
+    def test_login_functionality(self):
+        """
+        Login functionality test.
+        """
+        user_object = create_user_object()
+        response = self.client.post(reverse('rango:login'), {'username': 'Student', 'password': 'UofG1451'})
+
+        try:
+            self.assertEqual(user_object.id, int(self.client.session['_auth_user_id']), f"{FAILURE_HEADER}Incorrect user logged in.{FAILURE_FOOTER}")
+        except KeyError:
+            self.assertTrue(False, f"{FAILURE_HEADER}Unable to login the correct user.{FAILURE_FOOTER}")
+
+
+class LogoutTests(TestCase):
+    """
+    Test logging out functionality.
+    """
+    def test_bad_request(self):
+        """
+        Log out a user who is not logged in.
+        """
+        response = self.client.get(reverse('rango:logout'))
+        self.assertTrue(response.status_code, 302)
+
+    def test_good_request(self):
+        """
+        Log out a user who IS logged in.
+        """
+        user_object = create_user_object()
+        self.client.login(username='Student', password='UofG1451')
+
+        try:
+            self.assertEqual(user_object.id, int(self.client.session['_auth_user_id']), f"{FAILURE_HEADER}Incorrect user logged in.{FAILURE_FOOTER}")
+        except KeyError:
+            self.assertTrue(False, f"{FAILURE_HEADER}Failed to log user in.{FAILURE_FOOTER}")
