@@ -14,6 +14,7 @@ urlpatterns = [
     path('myreviews/', views.show_myreviews, name='show_myreviews'),
     path('professor/<slug:professor_name_slug>/add_review', views.add_review, name='add_review'),
     path('myreviews/delete', views.delete, name='delete'),
+    path('logout/', views.user_logout, name='logout'),
     #path('professor/<slug:professor_name_slug>/review', views.professor_review, name='professor_review')
 
 ]
